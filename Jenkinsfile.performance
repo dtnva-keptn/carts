@@ -57,6 +57,11 @@ pipeline {
           testCase: 'loadtest',
           tagMatchRules: tagMatchRules
         ) 
+        perfSigDynatraceReports(
+          envId: 'Dynatrace Tenant', 
+          nonFunctionalFailure: 1, 
+          specFile: "monspec/${env.APP_NAME}_perfsig.json"
+        ) 
         {
           container('jmeter') {
             script {
